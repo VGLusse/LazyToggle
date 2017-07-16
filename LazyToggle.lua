@@ -130,6 +130,12 @@ function LazyToggle.Dashboard:Gui()
 	self:SetBackdropColor(0,0,0,1) -- sets color and opacity - r,g,b,opacity
 	self:SetScript("OnDragStart", LazyToggle.Dashboard.Drag.StartMoving)
 	self:SetScript("OnDragStop", LazyToggle.Dashboard.Drag.StopMovingOrSizing)	
+	self:SetScript("OnUpdate", function()
+		this:EnableMouse(IsAltKeyDown())
+		if not IsAltKeyDown() and this.drag then
+			self.options:StopMovingOrSizing()
+		end
+	end)
 	
 	-- Toggle DND Mode button
 	LazyToggle.Dashboard.ToggleDNDModeButton = CreateFrame("Button",ToggleDNDModeButton,LazyToggle.Dashboard,"UIPanelCloseButton")
@@ -190,8 +196,8 @@ function LazyToggle:OnEvent()
 	if event == "ADDON_LOADED" and arg1 == "LazyToggle" then
 		LazyToggle.Dashboard:Gui() -- loads frame, see the function
 		LazyToggle_UpdateButtons()
-		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00LazyToggle:|r Loaded!",1,1,1)
-		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00LazyToggle:|r Version: "..LazyToggle_VERSION_MSG.."" ,1,1,1)
+		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00LazyToggle:|r Version: "..LazyToggle_VERSION_MSG.." Loaded!",1,1,1)
+		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00LazyToggle:|r Hold 'Alt' to move LT.",1,1,1)
 		LazyToggle_OnLogin()
 		
 		-- Hook message channels to catch output from GM commands:
@@ -211,3 +217,15 @@ function LazyToggle_OnLogin()
 		LazyToggle_UpdateAFKMode(nil);
 		LazyToggle_UpdateDNDMode(nil);
 end
+
+-- slash command
+function LazyToggle.slash()
+	if LazyToggle.Dashboard:IsVisible() then
+		LazyToggle.Dashboard:Hide()
+	else LazyToggle.Dashboard:Show()
+	end
+end
+
+SlashCmdList["LAZYTOGGLE_SLASH"] = LazyToggle.slash
+SLASH_LAZYTOGGLE_SLASH1 = "/lt"
+SLASH_LAZYTOGGLE_SLASH2 = "/LT"
