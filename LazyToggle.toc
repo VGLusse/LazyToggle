@@ -1,0 +1,8 @@
+## Interface: 11200
+## Title: LazyToggle
+## Author: Lusse
+## Version: 0.1
+## Notes: Made by |cFF00FF00Lusse|r Vanillagaming.org
+## DefaultState: Enabled
+## LoadOnDemand: 0
+LazyToggle.lua
