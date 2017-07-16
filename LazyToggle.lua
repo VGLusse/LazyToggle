@@ -1,7 +1,7 @@
 --##### 
 
 LazyToggle = CreateFrame("Button","LazyToggle",UIParent) -- Event frame
-LazyToggle.Dashboard = CreateFrame("Frame","LTDF",UIParent) -- Option Frame
+LazyToggle.Dashboard = CreateFrame("Frame","LTDF",UIParent) -- Dashboard Frame
 
 LazyToggle:RegisterEvent("ADDON_LOADED") -- Register event when addon is loaded
 
@@ -144,9 +144,9 @@ function LazyToggle.Dashboard:Gui()
 	LazyToggle.Dashboard.ToggleDNDModeButton:SetWidth(32)
 	LazyToggle.Dashboard.ToggleDNDModeButton:SetHeight(32)
 	LazyToggle.Dashboard.ToggleDNDModeButton:SetText("")
-	LazyToggle.Dashboard.ToggleDNDModeButton:SetScript("OnClick", function() LazyToggle_ToggleDNDMode() end) -- function to hide frame when clicked
-	LazyToggle.Dashboard.ToggleDNDModeButton:SetScript("OnEnter", function() LazyToggle_ShowDashboardToolTip(this, "Toggle DND Mode") end) -- function to hide frame when clicked
-	LazyToggle.Dashboard.ToggleDNDModeButton:SetScript("OnLeave", function() LazyToggle_HideDashboardToolTip(this) end) -- function to hide frame when clicked
+	LazyToggle.Dashboard.ToggleDNDModeButton:SetScript("OnClick", function() LazyToggle_ToggleDNDMode() end)
+	LazyToggle.Dashboard.ToggleDNDModeButton:SetScript("OnEnter", function() LazyToggle_ShowDashboardToolTip(this, "Toggle DND Mode") end)
+	LazyToggle.Dashboard.ToggleDNDModeButton:SetScript("OnLeave", function() LazyToggle_HideDashboardToolTip(this) end)
 	LazyToggle.Dashboard.ToggleDNDModeButton:SetNormalTexture("Interface\\AddOns\\LazyToggle\\dndoff.tga")
 	LazyToggle.Dashboard.ToggleDNDModeButton:SetPushedTexture("Interface\\AddOns\\LazyToggle\\dndoff.tga")
  
@@ -157,9 +157,9 @@ function LazyToggle.Dashboard:Gui()
 	LazyToggle.Dashboard.ToggleAFKModeButton:SetWidth(32)
 	LazyToggle.Dashboard.ToggleAFKModeButton:SetHeight(32)
 	LazyToggle.Dashboard.ToggleAFKModeButton:SetText("")
-	LazyToggle.Dashboard.ToggleAFKModeButton:SetScript("OnClick", function() LazyToggle_ToggleAFKMode() end) -- function to hide frame when clicked
-	LazyToggle.Dashboard.ToggleAFKModeButton:SetScript("OnEnter", function() LazyToggle_ShowDashboardToolTip(this, "Toggle AFK Mode") end) -- function to hide frame when clicked
-	LazyToggle.Dashboard.ToggleAFKModeButton:SetScript("OnLeave", function() LazyToggle_HideDashboardToolTip(this) end) -- function to hide frame when clicked
+	LazyToggle.Dashboard.ToggleAFKModeButton:SetScript("OnClick", function() LazyToggle_ToggleAFKMode() end)
+	LazyToggle.Dashboard.ToggleAFKModeButton:SetScript("OnEnter", function() LazyToggle_ShowDashboardToolTip(this, "Toggle AFK Mode") end)
+	LazyToggle.Dashboard.ToggleAFKModeButton:SetScript("OnLeave", function() LazyToggle_HideDashboardToolTip(this) end)
 	LazyToggle.Dashboard.ToggleAFKModeButton:SetNormalTexture("Interface\\AddOns\\LazyToggle\\afkoff.tga")
 	LazyToggle.Dashboard.ToggleAFKModeButton:SetPushedTexture("Interface\\AddOns\\LazyToggle\\afkoff.tga")
 	
@@ -194,7 +194,7 @@ end
 
 function LazyToggle:OnEvent()
 	if event == "ADDON_LOADED" and arg1 == "LazyToggle" then
-		LazyToggle.Dashboard:Gui() -- loads frame, see the function
+		LazyToggle.Dashboard:Gui()
 		LazyToggle_UpdateButtons()
 		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00LazyToggle:|r Version: "..LazyToggle_VERSION_MSG.." Loaded!",1,1,1)
 		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00LazyToggle:|r Hold 'Alt' to move LT.",1,1,1)
