@@ -2,7 +2,7 @@
 ## Title: LazyToggle
 ## Author: Lusse
 ## Version: 0.1
-## Notes: Made by |cFF00FF00Lusse|r Vanillagaming.org
+## Notes: Toggle DND and AFK mode. Made by |cFF00FF00Lusse|r @ Vanillagaming.org
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 LazyToggle.lua
