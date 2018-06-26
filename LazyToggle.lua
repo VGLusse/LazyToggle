@@ -199,15 +199,6 @@ function LazyToggle:OnEvent()
 		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00LazyToggle:|r Version: "..LazyToggle_VERSION_MSG.." Loaded!",1,1,1)
 		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00LazyToggle:|r Hold 'Alt' to move LT.",1,1,1)
 		LazyToggle_OnLogin()
-		
-		-- Hook message channels to catch output from GM commands:
-		for index = 1, 7, 1 do
-			if(index ~= 2) then
-				local frame = getglobal("ChatFrame"..index);
-				LazyToggle_ChatFrameHooks[frame] = frame.AddMessage;
-				frame.AddMessage = AddMessage;
-			end
-		end
 	end	
 end
 
